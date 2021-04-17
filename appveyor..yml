@@ -3,6 +3,7 @@
 version: 1.0.{build}.{branch}
 #
 
+
 environment:
   AUTHOR: Andre Mikulec
   MATVARIABLE: root
