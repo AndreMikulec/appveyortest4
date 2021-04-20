@@ -1,75 +1,32 @@
 
-#
 version: 1.0.{build}.{branch}
-#
-
+clone_depth: 1
 
 environment:
-  AUTHOR: Andre Mikulec
-  MATVARIABLE: root
-  ENVVARIABLE: forroot
+  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
 
   matrix:
-  - MATVARIABLE: matvar1
-  - MATVARIABLE: matvar2
-
+    - platform: x86
+    - platform: x64
 
 init:
-  - echo %ENVVARIABLE%
-  - echo root init
+- ps: |
+    # Set-PSDebug -Trace 2
+    if ("${env:platform}" -eq "x64") {
+      ${env:MSYSTEM} = "MINGW64"
+    } else {
+      ${env:MSYSTEM} = "MINGW32"
+    }
 
 install:
-  - echo root install
+- ps: |
+    # Set-PSDebug -Trace 2
+    ${env:PATH} = "C:\msys64\${env:MSYSTEM}\bin;C:\msys64\usr\bin;C:\msys64\bin;${env:PATH}"
+- echo install:
+- bash --login -c "export"
+- bash --login -c "gcc –version"
 
-before_build:
-  - echo root before_build
-
-for:
-
--
-  matrix:
-    only:
-      - MATVARIABLE: matvar1
-
-  environment:
-    ENVVARIABLE: for1
-
-
-  build_script:
-    - echo matvar1 build_script
-
-
--
-  matrix:
-    only:
-      - MATVARIABLE: matvar2
-
-  environment:
-    ENVVARIABLE: for2
-
-  build_script:
-    - echo matvar2 build_script
-
-
-cache:
-- item.txt
-
-
-artifacts:
-- path: 'plr-*.zip'
-  name: plr_zip
-- path: 'pg-*.zip'
-  name: pg_zip
-
-deploy:
-
-  - provider: FTP
-    host: frs.sourceforge.net
-    protocol: sftp
-    username: andremikulec,andremikulec.u
-    password:
-      secure: 4gk4GyW4O5RooiOyGeRdoA==
-    artifact: pg_zip, plr_zip
-    folder: /home/frs/project/andremikulec
-    application:
-    active_mode: false
+build_script:
+- echo build_script:
+- bash --login -c "export"
+- bash --login -c "gcc –version"
