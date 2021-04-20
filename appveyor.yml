@@ -24,9 +24,9 @@ install:
     ${env:PATH} = "C:\msys64\${env:MSYSTEM}\bin;C:\msys64\usr\bin;C:\msys64\bin;${env:PATH}"
 - echo install:
 - bash --login -c "export"
-- bash --login -c "gcc –version"
+- bash --login -c "gcc --version"
 
 build_script:
 - echo build_script:
 - bash --login -c "export"
-- bash --login -c "gcc –version"
+- bash --login -c "gcc --version"
