@@ -25,8 +25,12 @@ install:
 - echo install:
 - bash --login -c "export"
 - bash --login -c "gcc --version"
+# built in specifications
+- bash --login -c "gcc -v"
 
 build_script:
 - echo build_script:
 - bash --login -c "export"
 - bash --login -c "gcc --version"
+# built in specifications
+- bash --login -c "gcc -v"
