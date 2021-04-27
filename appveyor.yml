@@ -6,31 +6,22 @@ environment:
   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
 
   matrix:
-    - platform: x86
-    - platform: x64
+    - Platform: x64
 
 init:
-- ps: |
-    # Set-PSDebug -Trace 2
-    if ("${env:platform}" -eq "x64") {
-      ${env:MSYSTEM} = "MINGW64"
-    } else {
-      ${env:MSYSTEM} = "MINGW32"
-    }
+- echo init
 
 install:
-- ps: |
-    # Set-PSDebug -Trace 2
-    ${env:PATH} = "C:\msys64\${env:MSYSTEM}\bin;C:\msys64\usr\bin;C:\msys64\bin;${env:PATH}"
-- echo install:
-- bash --login -c "export"
-- bash --login -c "gcc --version"
-# built in specifications
-- bash --login -c "gcc -v"
+- echo install_script
 
 build_script:
-- echo build_script:
-- bash --login -c "export"
-- bash --login -c "gcc --version"
-# built in specifications
-- bash --login -c "gcc -v"
+- echo build_script
+- echo ALPHA > ALPHA.txt
+- appveyor PushArtifact %APPVEYOR_BUILD_FOLDER%\ALPHA.txt
+- mkdir beta
+- cd    beta
+- echo BETA1 > %APPVEYOR_BUILD_FOLDER%\BETA1.txt
+- echo BETA2 > %APPVEYOR_BUILD_FOLDER%\BETA2.txt
+- appveyor PushArtifact %APPVEYOR_BUILD_FOLDER%\BETA2.txt
+- appveyor PushArtifact BETA2.txt
+- cd ..

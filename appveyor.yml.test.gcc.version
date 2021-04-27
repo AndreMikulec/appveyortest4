@@ -1,0 +1,36 @@
+
+version: 1.0.{build}.{branch}
+clone_depth: 1
+
+environment:
+  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+
+  matrix:
+    - platform: x86
+    - platform: x64
+
+init:
+- ps: |
+    # Set-PSDebug -Trace 2
+    if ("${env:platform}" -eq "x64") {
+      ${env:MSYSTEM} = "MINGW64"
+    } else {
+      ${env:MSYSTEM} = "MINGW32"
+    }
+
+install:
+- ps: |
+    # Set-PSDebug -Trace 2
+    ${env:PATH} = "C:\msys64\${env:MSYSTEM}\bin;C:\msys64\usr\bin;C:\msys64\bin;${env:PATH}"
+- echo install:
+- bash --login -c "export"
+- bash --login -c "gcc --version"
+# built in specifications
+- bash --login -c "gcc -v"
+
+build_script:
+- echo build_script:
+- bash --login -c "export"
+- bash --login -c "gcc --version"
+# built in specifications
+- bash --login -c "gcc -v"
