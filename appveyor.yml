@@ -10,8 +10,8 @@ environment:
 
 init:
 - echo init
-- "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -latest -property productId
-- "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -latest -property catalog_productLineVersion
+- '"C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -latest -property productId'
+- '"C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -latest -property catalog_productLineVersion'
 
 install:
 - echo install_script
