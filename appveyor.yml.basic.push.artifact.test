@@ -1,0 +1,27 @@
+
+version: 1.0.{build}.{branch}
+clone_depth: 1
+
+environment:
+  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+
+  matrix:
+    - Platform: x64
+
+init:
+- echo init
+
+install:
+- echo install_script
+
+build_script:
+- echo build_script
+- echo ALPHA > ALPHA.txt
+- appveyor PushArtifact %APPVEYOR_BUILD_FOLDER%\ALPHA.txt
+- mkdir beta
+- cd    beta
+- echo BETA1 > %APPVEYOR_BUILD_FOLDER%\BETA1.txt
+- echo BETA2 > %APPVEYOR_BUILD_FOLDER%\BETA2.txt
+- appveyor PushArtifact %APPVEYOR_BUILD_FOLDER%\BETA2.txt
+- appveyor PushArtifact BETA2.txt
+- cd ..
