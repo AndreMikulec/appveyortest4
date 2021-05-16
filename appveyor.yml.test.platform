@@ -1,0 +1,31 @@
+
+version: 1.0.{build}.{branch}
+clone_depth: 1
+
+environment:
+
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      Platform: x64
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      Platform: x64
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      Platform: x64
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      Platform: x86
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      Platform: x86
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      Platform: x86
+
+init:
+- echo init
+
+install:
+- echo install_script
+
+build_script:
+- echo build_script
+- echo APPVEYOR_BUILD_WORKER_IMAGE %APPVEYOR_BUILD_WORKER_IMAGE%
+- echo Platform %Platform%
+- which curl
