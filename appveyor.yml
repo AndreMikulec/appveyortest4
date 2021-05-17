@@ -16,3 +16,4 @@ install:
 
 build_script:
 - echo build_script
+- bash -login -c 'alias'
