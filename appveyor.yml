@@ -25,7 +25,7 @@ artifacts:
 
 deploy:
   - provider: GitHub
-    release: "%APPVEYOR_PROJECT_SLUG%_%appveyor_build_version%
+    release: "%APPVEYOR_PROJECT_SLUG%_%appveyor_build_version%"
     auth_token:
       secure: KzS1DumC2yBg2LGN9x3AemHFOjAdp+rD58rW5aGGpwW4Pfdwdm7AmRpYKprPY8Gs
     artifact: deploy_test
