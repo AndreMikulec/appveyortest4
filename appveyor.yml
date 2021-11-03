@@ -25,7 +25,6 @@ artifacts:
 
 deploy:
   - provider: GitHub
-    release: deploy_test_release
     auth_token:
       secure: KzS1DumC2yBg2LGN9x3AemHFOjAdp+rD58rW5aGGpwW4Pfdwdm7AmRpYKprPY8Gs
     artifact: deploy_test
