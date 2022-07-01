@@ -1,0 +1,33 @@
+
+version: 1.0.{build}.{branch}
+clone_depth: 1
+
+environment:
+
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      Platform: x64
+
+init:
+- echo init
+
+install:
+- echo install_script
+
+build_script:
+- echo build_script
+- bash -login -c 'alias'
+- echo build_script >> deploy_test.txt
+
+artifacts:
+  - path: deploy_test.txt
+    name: deploy_test
+
+deploy:
+  - provider: GitHub
+    auth_token:
+      secure: O4OTdJVY47/Ju0HtC3lEUOtmgFrdOiNCZyHPHi3FPDdJUmnqdsDhPGtJi+j+cLgy
+    artifact: deploy_test
+    draft: false
+    prerelease: false
+    

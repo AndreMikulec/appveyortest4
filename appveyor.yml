@@ -5,7 +5,7 @@ clone_depth: 1
 environment:
 
   matrix:
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
       Platform: x64
 
 init:
@@ -16,18 +16,12 @@ install:
 
 build_script:
 - echo build_script
-- bash -login -c 'alias'
-- echo build_script >> deploy_test.txt
-
-artifacts:
-  - path: deploy_test.txt
-    name: deploy_test
-
-deploy:
-  - provider: GitHub
-    auth_token:
-      secure: O4OTdJVY47/Ju0HtC3lEUOtmgFrdOiNCZyHPHi3FPDdJUmnqdsDhPGtJi+j+cLgy
-    artifact: deploy_test
-    draft: false
-    prerelease: false
+- mkdir Play
+- cd Play
+- mkdir Play2
+- cd Play2
+- ps: |
+    Set-PSDebug -Trace 2
+    $MIKTEX_MIRROR = "https://miktex.org/download/win/basic-miktex-x64.exe"
+    & "C:\Program Files\Git\mingw64\bin\curl.exe" -o ../basic-miktex-x64.exe -L $MIKTEX_MIRROR
     
