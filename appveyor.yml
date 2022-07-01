@@ -33,6 +33,7 @@ build_script:
     (Get-Item "$env:OutPathFileName").Length
     "DONE"
     # & curl.exe -> RED(shows many errors) & False 136956168 & kept on going
+    # WINNER: { & curl.exe } -> RED(shows many errors) & False 136956168 & kept on going
     #   curl.exe -> SLOW WATERFALL(showed some errors) & RED & False 136956168 & kept on going
     # & "C:\Program Files\Git\mingw64\bin\curl.exe" -> RED(shows many errors) & False 136956168 & kept on going
     # { & "C:\Program Files\Git\mingw64\bin\curl.exe" } -> SLOW WATERFALL -> RED(shows many errors) & False 136956168 & kept on going
