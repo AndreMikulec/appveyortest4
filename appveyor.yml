@@ -27,7 +27,7 @@ build_script:
     $env:OutPathFileName = (Split-Path (Get-Location).Path -Parent) + "\" + "basic-miktex-x64.exe"
     Write-Host "Downloading " + $MIKTEX_MIRROR
     if($True -eq $True) {
-      & "C:\Program Files\Git\mingw64\bin\curl.exe" -o "$env:OutPathFileName" -L $MIKTEX_MIRROR
+      & curl.exe -o "$env:OutPathFileName" -L $MIKTEX_MIRROR
     }
     $?
     (Get-Item "$env:OutPathFileName").Length
@@ -35,6 +35,6 @@ build_script:
     # & curl.exe -> RED(shows many errors) & False 136956168 & kept on going
     #   curl.exe -> SLOW WATERFALL(showed some errors) & RED & False 136956168 & kept on going
     # & "C:\Program Files\Git\mingw64\bin\curl.exe" -> RED(shows many errors) & False 136956168 & kept on going
-    # { & "C:\Program Files\Git\mingw64\bin\curl.exe" } -> RED(shows many errors) & False 136956168 & kept on going
+    # { & "C:\Program Files\Git\mingw64\bin\curl.exe" } -> SLOW WATERFALL -> RED(shows many errors) & False 136956168 & kept on going
     #   ANDRE NOTE: bad place to check $? after if( ) { }
     
