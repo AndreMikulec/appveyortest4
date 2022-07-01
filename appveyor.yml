@@ -26,9 +26,10 @@ build_script:
     "STARTING"
     $env:OutPathFileName = (Split-Path (Get-Location).Path -Parent) + "\" + "basic-miktex-x64.exe"
     Write-Host "Downloading " + $MIKTEX_MIRROR
-    & curl.exe -o "$env:OutPathFileName" -L $MIKTEX_MIRROR
+    curl.exe -o "$env:OutPathFileName" -L $MIKTEX_MIRROR
     $?
     (Get-Item "$env:OutPathFileName").Length
     "DONE"
+    # & curl.exe -> RED & False 136956168
     
     
