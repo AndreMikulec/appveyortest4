@@ -28,7 +28,7 @@ build_script:
     Write-Host "Downloading " + $MIKTEX_MIRROR
     curl.exe -o "$env:OutPathFileName" -L $MIKTEX_MIRROR
     $?
-    ((Get-Item "$env:OutPathFileName").Length
+    (Get-Item "$env:OutPathFileName").Length
     "DONE"
     
     
