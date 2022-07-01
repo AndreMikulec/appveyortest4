@@ -26,5 +26,7 @@ build_script:
     "STARTING"
     Write-Host "Downloading " + $MIKTEX_MIRROR
     curl.exe -o ../basic-miktex-x64.exe -L "https://miktex.org/download/win/basic-miktex-x64.exe"
+    $?
     "DONE"
+    
     
