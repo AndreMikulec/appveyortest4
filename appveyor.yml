@@ -13,7 +13,6 @@ init:
 
 install:
 - echo install_script
-- pacman -S --needed --noconfirm mingw-w64-ucrt-x86_64-curl
 
 build_script:
 - echo build_script
@@ -23,7 +22,7 @@ build_script:
 - cd Play2
 - ps: |
     # Set-PSDebug -Trace 2
-    $MIKTEX_MIRROR = "https://miktex.org/download/win/basic-miktex-x64.exe"
+    # $MIKTEX_MIRROR = "https://miktex.org/download/win/basic-miktex-x64.exe"
     Write-Host "Downloading " + $MIKTEX_MIRROR
-    & curl.exe -o ../basic-miktex-x64.exe -L $MIKTEX_MIRROR
+    curl.exe -o ../basic-miktex-x64.exe -L "https://miktex.org/download/win/basic-miktex-x64.exe"
     
