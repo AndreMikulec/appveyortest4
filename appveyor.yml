@@ -24,9 +24,11 @@ build_script:
     # Set-PSDebug -Trace 2
     # $MIKTEX_MIRROR = "https://miktex.org/download/win/basic-miktex-x64.exe"
     "STARTING"
+    $env:OutPathFileName = (Split-Path (Get-Location).Path -Parent) + "\" + "basic-miktex-x64.exe"
     Write-Host "Downloading " + $MIKTEX_MIRROR
-    curl.exe -o ../basic-miktex-x64.exe -L "https://miktex.org/download/win/basic-miktex-x64.exe"
+    curl.exe -o "$env:OutPathFileName" -L $MIKTEX_MIRROR
     $?
+    ((Get-Item "$env:OutPathFileName").Length
     "DONE"
     
     
