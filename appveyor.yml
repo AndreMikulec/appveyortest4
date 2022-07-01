@@ -22,7 +22,7 @@ build_script:
 - cd Play2
 - ps: |
     # Set-PSDebug -Trace 2
-    # $MIKTEX_MIRROR = "https://miktex.org/download/win/basic-miktex-x64.exe"
+    $MIKTEX_MIRROR = "https://miktex.org/download/win/basic-miktex-x64.exe"
     "STARTING"
     $env:OutPathFileName = (Split-Path (Get-Location).Path -Parent) + "\" + "basic-miktex-x64.exe"
     Write-Host "Downloading " + $MIKTEX_MIRROR
