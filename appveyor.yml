@@ -35,4 +35,6 @@ build_script:
     # & curl.exe -> RED(shows many errors) & False 136956168 & kept on going
     #   curl.exe -> SLOW WATERFALL(showed some errors) & RED & False 136956168 & kept on going
     # & "C:\Program Files\Git\mingw64\bin\curl.exe" -> RED(shows many errors) & False 136956168 & kept on going
+    # { & "C:\Program Files\Git\mingw64\bin\curl.exe" } -> RED(shows many errors) & False 136956168 & kept on going
+    #   ANDRE NOTE: bad place to check $? after if( ) { }
     
