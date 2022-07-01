@@ -28,7 +28,7 @@ build_script:
     Write-Host "Downloading " + $MIKTEX_MIRROR
     if($True -eq $True) {
       & "C:\Program Files\Git\mingw64\bin\curl.exe" -o "$env:OutPathFileName" -L $MIKTEX_MIRROR
-    )
+    }
     $?
     (Get-Item "$env:OutPathFileName").Length
     "DONE"
