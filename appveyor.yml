@@ -21,7 +21,8 @@ build_script:
 - mkdir Play2
 - cd Play2
 - ps: |
-    Set-PSDebug -Trace 2
+    # Set-PSDebug -Trace 2
     $MIKTEX_MIRROR = "https://miktex.org/download/win/basic-miktex-x64.exe"
+    Write-Host "Downloading " + $MIKTEX_MIRROR
     & "C:\Program Files\Git\mingw64\bin\curl.exe" -o ../basic-miktex-x64.exe -L $MIKTEX_MIRROR
     
