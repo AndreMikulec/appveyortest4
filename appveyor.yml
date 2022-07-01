@@ -23,6 +23,8 @@ build_script:
 - ps: |
     # Set-PSDebug -Trace 2
     # $MIKTEX_MIRROR = "https://miktex.org/download/win/basic-miktex-x64.exe"
+    "STARTING"
     Write-Host "Downloading " + $MIKTEX_MIRROR
     curl.exe -o ../basic-miktex-x64.exe -L "https://miktex.org/download/win/basic-miktex-x64.exe"
+    "DONE"
     
