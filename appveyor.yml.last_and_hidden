@@ -1,0 +1,41 @@
+
+version: 1.0.{build}.{branch}
+clone_depth: 1
+
+environment:
+
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
+      Platform: x64
+
+init:
+- echo init
+
+install:
+- echo install_script
+
+build_script:
+- echo build_script
+- mkdir Play
+- cd Play
+- mkdir Play2
+- cd Play2
+- ps: |
+    # Set-PSDebug -Trace 2
+    $MIKTEX_MIRROR = "https://miktex.org/download/win/basic-miktex-x64.exe"
+    "STARTING"
+    $env:OutPathFileName = (Split-Path (Get-Location).Path -Parent) + "\" + "basic-miktex-x64.exe"
+    Write-Host "Downloading " + $MIKTEX_MIRROR
+    if($True -eq $True) {
+      & curl.exe -o "$env:OutPathFileName" -L $MIKTEX_MIRROR
+    }
+    $?
+    (Get-Item "$env:OutPathFileName").Length
+    "DONE"
+    # & curl.exe -> RED(shows many errors) & False 136956168 & kept on going
+    # WINNER: { & curl.exe } -> RED(shows many errors) & False 136956168 & kept on going
+    #   curl.exe -> SLOW WATERFALL(showed some errors) & RED & False 136956168 & kept on going
+    # & "C:\Program Files\Git\mingw64\bin\curl.exe" -> RED(shows many errors) & False 136956168 & kept on going
+    # { & "C:\Program Files\Git\mingw64\bin\curl.exe" } -> SLOW WATERFALL -> RED(shows many errors) & False 136956168 & kept on going
+    #   ANDRE NOTE: bad place to check $? after if( ) { }
+    
