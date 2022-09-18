@@ -1,0 +1,24 @@
+name: Build Everything
+permissions: read-all
+
+on:
+  # For manual tests.
+  workflow_dispatch:
+  push:
+#   tags:
+#     - "*" # new tag version, like `0.8.4` or else
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  detect_it:
+    name: Detect
+    runs-on: ubuntu-latest
+    steps:
+      - name: See REFs
+        run: |
+          echo ${{  github.ref_name }}
+          echo ${{  github.ref_type }}
