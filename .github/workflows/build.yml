@@ -10,11 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Dump github context global data
-        run:   echo "$ENV_CONTEXT"
+        run:   export
         shell: bash
-        env:
-          ENV_CONTEXT: ${{ toJson(env) }}
-          
+
   information_github:
     name: Knowledge About github
     runs-on: ubuntu-latest
@@ -43,6 +41,8 @@ jobs:
         run: |
           echo "USER_GIT_TAG=`git describe --tags --abbrev=0 2>/dev/null || true`" >> $GITHUB_ENV
           echo "USER_GIT_COMMIT=`rev-parse HEAD 2>/dev/null || true`" >> $GITHUB_ENV
+          cat $GITHUB_ENV
+        shell: bash
           
   build:
     name: Knowledge New
@@ -51,12 +51,20 @@ jobs:
       - name: Set new global data
         run: |
           date > README.txt
+        shell: bash
 
   release:
+    name: Release Me
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
+      - name: Set new global data
+        run: |
+          echo "USER_GIT_TAG=`git describe --tags --abbrev=0 2>/dev/null || true`" >> $GITHUB_ENV
+          echo "USER_GIT_COMMIT=`rev-parse HEAD 2>/dev/null || true`" >> $GITHUB_ENV
+          cat $GITHUB_ENV
+        shell: bash
     - uses: actions/checkout@v2
     - uses: ncipollo/release-action@v1
       with:
@@ -66,4 +74,3 @@ jobs:
         tag: THE_CURRENT_RELEASE
         artifacts: "README.txt"
         token: ${{ secrets.GITHUB_ACTIONS_CREATE_RELEASE_REPO }}
-
