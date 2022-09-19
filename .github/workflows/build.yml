@@ -79,4 +79,4 @@ jobs:
         token: ${{ secrets.ACTIONS_CREATE_RELEASE_REPO_SECRET }}
     env:
       USER_GITHUB_SHA: ${{ github.sha }}
-      USER_GITHUB_REF_NAME: ${{ github.ref_name }
+      USER_GITHUB_REF_NAME: ${{ github.ref_name }}
