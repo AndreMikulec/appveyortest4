@@ -59,18 +59,12 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Set new global data
-        run: |
-          echo "USER_GIT_TAG=`git describe --tags --abbrev=0 2>/dev/null || true`" >> $GITHUB_ENV
-          echo "USER_GIT_COMMIT=`rev-parse HEAD 2>/dev/null || true`" >> $GITHUB_ENV
-          cat $GITHUB_ENV
-        shell: bash
     - uses: actions/checkout@v2
     - uses: ncipollo/release-action@v1
       with:
         allowUpdates: true
         replacesArtifacts: true
-        commit: ${{ env.USER_GIT_COMMIT }}
+        commit: HEAD
         tag: THE_CURRENT_RELEASE
         artifacts: "README.txt"
         token: ${{ secrets.GITHUB_ACTIONS_CREATE_RELEASE_REPO }}
