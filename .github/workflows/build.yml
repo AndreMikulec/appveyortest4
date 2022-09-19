@@ -49,7 +49,8 @@ jobs:
           echo "USER_GIT_TAG=`git describe --tags --abbrev=0 2>/dev/null || true`" >> $GITHUB_ENV
           echo "USER_GIT_COMMIT=`rev-parse HEAD 2>/dev/null || true`" >> $GITHUB_ENV
           cat $GITHUB_ENV
-          export | grep USER_
+          # not SEEING anything
+          export | grep USER_ 2>/dev/null || true
         shell: bash
           
   build:
