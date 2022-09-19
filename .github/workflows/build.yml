@@ -37,13 +37,16 @@ jobs:
     name: Knowledge New
     runs-on: ubuntu-latest
     steps:
-      - name: Set new global data
+      - name: Set new global data USER_SOMETHING
         run: |
           echo "USER_SOMETHING=something" >> $GITHUB_ENV
+      - name: Set new global data USER_GIT_TAG
         run: |
           echo "USER_GIT_TAG=`git describe --tags --abbrev=0 2>/dev/null || true`" >> $GITHUB_ENV
+      - name: Set new global data USER_GIT_COMMIT
         run: |
           echo "USER_GIT_COMMIT=`rev-parse HEAD 2>/dev/null || true`" >> $GITHUB_ENV
+      - name: Print Output
         run: |
           cat $GITHUB_ENV
         shell: bash
