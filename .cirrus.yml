@@ -1,0 +1,10 @@
+linux_task:
+  name: "alpine-arm:latest"
+  arm_container:
+    image: alpine:latest
+    cpu: 1
+    memory: 1G
+  timeout_in: 1m
+  script:
+    - uname -a
+    - uname -a
