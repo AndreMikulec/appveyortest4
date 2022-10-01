@@ -1,10 +1,10 @@
 linux_task:
   # name: "openjdk:latest"
-  name: "cimg/base:current"
+  name: "wpilib/raspbian-cross-ubuntu"
   # name: "cirrusci/flutter:latest"
   arm_container:
     # image: openjdk:latest
-    image: cimg/base:current
+    image: wpilib/raspbian-cross-ubuntu
     # aarch64 aarch64 aarch64 GNU/Linux
     # arm_container: Error starting command: fork/exec /usr/bin/bash: exec format error
     # image: cirrusci/flutter:latest
