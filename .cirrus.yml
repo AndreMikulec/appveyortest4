@@ -18,7 +18,7 @@ linux_task:
     - sudo ls -l /usr/bin
     - sudo apt-get update
     - sudo apt-get install snapd
-    # sudo reboot
+    - sudo reboot
     - sudo which snap  || true
     - sudo snap --version
     - sudo snap install core
