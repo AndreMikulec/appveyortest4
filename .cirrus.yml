@@ -29,15 +29,15 @@ linux_task:
     # - dart --version || true
     # - sudo which flutter || true
     # - flutter --version || true
-    - sudo ls -l /usr/bin || true
-    - sudo ls -l /home/circleci/bin || true
-    - sudo ls -l /home/circleci/.local/bin || true
-    - sudo ls -l /usr/local/sbin || true
-    - sudo ls -l /usr/local/bin || true
-    - sudo ls -l /usr/sbin || true
-    - sudo ls -l /usr/bin || true
-    - sudo ls -l /sbin || true
-    - sudo ls -l /bin || true
+    - ls -l /usr/bin || true
+    - ls -l /home/circleci/bin || true
+    - ls -l /home/circleci/.local/bin || true
+    - ls -l /usr/local/sbin || true
+    - ls -l /usr/local/bin || true
+    - ls -l /usr/sbin || true
+    - ls -l /usr/bin || true
+    - ls -l /sbin || true
+    - ls -l /bin || true
     # - sudo apt-get update
     # - reboot
     # - sudo apt-get install snapd
