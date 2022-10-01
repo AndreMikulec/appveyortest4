@@ -38,11 +38,11 @@ linux_task:
     - sudo ls -l /usr/bin || true
     - sudo ls -l /sbin || true
     - sudo ls -l /bin || true
-    sudo apt-get update
+    - sudo apt-get update
     # - reboot
-    sudo apt-get install snapd
+    - sudo apt-get install snapd
     # - sudo which snap  || true
-    sudo snap --version
+    - sudo snap --version
     # snapd unavailable
     # - sudo snap install core
     # - sudo snap install flutter --classic
