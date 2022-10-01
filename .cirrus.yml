@@ -17,8 +17,8 @@ linux_task:
     - sudo which flutter || true
     - sudo ls -l /usr/bin
     - sudo apt-get update
+    - reboot
     - sudo apt-get install snapd
-    - sudo reboot
     - sudo which snap  || true
     - sudo snap --version
     - sudo snap install core
