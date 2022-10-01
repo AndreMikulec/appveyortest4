@@ -12,8 +12,10 @@ linux_task:
     - uname -a
     - whoami
     - ls -alrt
-    - sudo apt-get install dnf
-    - sudo dnf install snapd
+    # Unable to locate package dnf
+    # - sudo apt-get install dnf
+    - sudo apt-get install yum
+    ##- sudo dnf install snapd
     # - sudo echo ${PATH}  || true
     - echo ${PATH}  || true
     # - sudo which sudo  || true
