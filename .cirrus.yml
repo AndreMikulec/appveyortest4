@@ -1,7 +1,9 @@
 linux_task:
-  name: "cimg/base:edge"
+  # name: "cimg/base:edge"
+  name: "cirrusci/flutter:latest"
   arm_container:
-    image: cimg/base:edge
+    # image: cimg/base:edge
+    image: cirrusci/flutter:latest
     cpu: 1
     memory: 1G
   timeout_in: 5m
@@ -9,18 +11,22 @@ linux_task:
     - uname -a
     - whoami
     - ls -alrt
-    - sudo echo ${PATH} || true
-    - sudo which sudo  || true
-    - sudo which yum   || true
-    - sudo which snap  || true
-    - sudo which dart  || true
-    - sudo which flutter || true
-    - sudo ls -l /usr/bin
-    - sudo apt-get update
-    - reboot
-    - sudo apt-get install snapd
-    - sudo which snap  || true
-    - sudo snap --version
-    - sudo snap install core
-    - sudo snap install flutter --classic
+    # - sudo echo ${PATH}  || true
+    - echo ${PATH}  || true
+    # - sudo which sudo  || true
+    # - sudo which yum   || true
+    # - sudo which snap  || true
+    # - sudo which dart  || true
+    - dart --version || true
+    # - sudo which flutter || true
+    - flutter --version || true
+    # - sudo ls -l /usr/bin
+    # - sudo apt-get update
+    # - reboot
+    # - sudo apt-get install snapd
+    # - sudo which snap  || true
+    # - sudo snap --version
+    # - sudo snap install core
+    # - sudo snap install flutter --classic
+    # - flutter --version
 
