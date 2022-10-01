@@ -45,6 +45,6 @@ linux_task:
     - sudo snap --version
     # snapd unavailable
     # - sudo snap install core
-    # - sudo snap install flutter --classic
+    - sudo snap install flutter --classic
     # - flutter --version
 
