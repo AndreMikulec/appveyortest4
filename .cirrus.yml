@@ -1,9 +1,10 @@
 linux_task:
-  # name: "cimg/base:edge"
-  name: "cirrusci/flutter:latest"
+  name: "cimg/base:edge"
+  # name: "cirrusci/flutter:latest"
   arm_container:
-    # image: cimg/base:edge
-    image: cirrusci/flutter:latest
+    image: cimg/base:edge
+    # arm_container: Error starting command: fork/exec /usr/bin/bash: exec format error
+    # image: cirrusci/flutter:latest
     cpu: 1
     memory: 1G
   timeout_in: 5m
@@ -11,6 +12,8 @@ linux_task:
     - uname -a
     - whoami
     - ls -alrt
+    - sudo apt-get install dnf
+    - sudo dnf install snapd
     # - sudo echo ${PATH}  || true
     - echo ${PATH}  || true
     # - sudo which sudo  || true
