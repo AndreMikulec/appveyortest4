@@ -8,3 +8,10 @@ linux_task:
   script:
     - uname -a
     - ls -alrt
+    - echo ${PATH} || true
+    - which java  || true
+    - which sudo  || true
+    - which yum   || true
+    - which snap  || true
+    - which dart  || true
+    - which flutter || true
