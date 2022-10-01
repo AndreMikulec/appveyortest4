@@ -6,4 +6,4 @@ linux_task:
     memory: 1G
   timeout_in: 5m
   script:
-    - sudo snap install flutter --classic
+    - snap install flutter --classic
