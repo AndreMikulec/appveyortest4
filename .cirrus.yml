@@ -1,7 +1,7 @@
 linux_task:
-  name: "ubuntu-arm:latest"
+  name: "debian-arm:latest"
   arm_container:
-    image: ubuntu:latest
+    image: debian:latest
     cpu: 1
     memory: 1G
   timeout_in: 5m
