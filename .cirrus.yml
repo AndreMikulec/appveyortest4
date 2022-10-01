@@ -7,6 +7,7 @@ linux_task:
   timeout_in: 5m
   script:
     - uname -a
+    - whoami
     - ls -alrt
     - sudo echo ${PATH} || true
     - sudo which sudo  || true
@@ -17,5 +18,9 @@ linux_task:
     - sudo ls -l /usr/bin
     - sudo apt-get update
     - sudo apt-get install snapd
+    # sudo reboot
     - sudo which snap  || true
     - sudo snap --version
+    - sudo snap install core
+    - sudo snap install flutter --classic
+
