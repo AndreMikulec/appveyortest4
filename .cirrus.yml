@@ -1,7 +1,6 @@
 linux_task:
-  name: "debian-arm:latest"
+  name: "amzn2.aarch64"
   arm_container:
-    image: debian:latest
     cpu: 1
     memory: 1G
   timeout_in: 5m
