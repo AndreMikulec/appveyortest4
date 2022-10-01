@@ -1,10 +1,10 @@
 linux_task:
   # name: "openjdk:latest"
-  name: "navikey/raspbian-buster"
+  name: "cimg/base:current"
   # name: "cirrusci/flutter:latest"
   arm_container:
     # image: openjdk:latest
-    image: navikey/raspbian-buster
+    image: cimg/base:current
     # aarch64 aarch64 aarch64 GNU/Linux
     # arm_container: Error starting command: fork/exec /usr/bin/bash: exec format error
     # image: cirrusci/flutter:latest
@@ -13,6 +13,7 @@ linux_task:
   timeout_in: 5m
   script:
     - uname -a
+    - lsb_release -a || true
     - whoami
     # - ls -alrt
     # Unable to locate package dnf
@@ -46,5 +47,5 @@ linux_task:
     # snapd unavailable
     # - sudo snap install core
     - sudo snap install flutter --classic
-    # - flutter --version
+    - flutter --version
 
