@@ -14,4 +14,8 @@ linux_task:
     - sudo which snap  || true
     - sudo which dart  || true
     - sudo which flutter || true
-    - sudo ls -alrt /usr/bin
+    - sudo ls -l /usr/bin
+    - sudo apt-get update
+    - sudo apt-get install snapd
+    - sudo which snap  || true
+    - sudo snap --version
