@@ -8,10 +8,10 @@ linux_task:
   script:
     - uname -a
     - ls -alrt
-    - echo ${PATH} || true
-    - which java  || true
-    - which sudo  || true
-    - which yum   || true
-    - which snap  || true
-    - which dart  || true
-    - which flutter || true
+    - sudo echo ${PATH} || true
+    - sudo which sudo  || true
+    - sudo which yum   || true
+    - sudo which snap  || true
+    - sudo which dart  || true
+    - sudo which flutter || true
+    - sudo ls -alrt /usr/bin
