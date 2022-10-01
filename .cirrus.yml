@@ -1,7 +1,7 @@
 linux_task:
-  name: "openjdk:latest"
+  name: "cimg/base:edge-20.04"
   arm_container:
-    image: cimg/openjdk
+    image: cimg/base:edge-20.04
     cpu: 1
     memory: 1G
   timeout_in: 5m
