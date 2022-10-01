@@ -1,7 +1,7 @@
 linux_task:
   name: "openjdk:latest"
   arm_container:
-    image: openjdk:latest
+    image: cimg/openjdk
     cpu: 1
     memory: 1G
   timeout_in: 5m
