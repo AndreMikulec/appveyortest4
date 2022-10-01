@@ -1,20 +1,24 @@
 linux_task:
-  name: "cimg/base:edge"
+  name: "openjdk:latest"
+  # name: "cimg/base:edge"
   # name: "cirrusci/flutter:latest"
   arm_container:
+    image: openjdk:latest
     image: cimg/base:edge
+    # aarch64 aarch64 aarch64 GNU/Linux
     # arm_container: Error starting command: fork/exec /usr/bin/bash: exec format error
     # image: cirrusci/flutter:latest
     cpu: 1
     memory: 1G
   timeout_in: 5m
   script:
-    - uname -a
-    - whoami
-    - ls -alrt
+    # - uname -a
+    # - whoami
+    # - ls -alrt
     # Unable to locate package dnf
     # - sudo apt-get install dnf
-    - sudo apt-get install yum
+    # Unable to locate package yum
+    # - sudo apt-get install yum
     ##- sudo dnf install snapd
     # - sudo echo ${PATH}  || true
     - echo ${PATH}  || true
@@ -22,15 +26,16 @@ linux_task:
     # - sudo which yum   || true
     # - sudo which snap  || true
     # - sudo which dart  || true
-    - dart --version || true
+    # - dart --version || true
     # - sudo which flutter || true
-    - flutter --version || true
-    # - sudo ls -l /usr/bin
+    # - flutter --version || true
+    - sudo ls -l /usr/bin
     # - sudo apt-get update
     # - reboot
     # - sudo apt-get install snapd
     # - sudo which snap  || true
     # - sudo snap --version
+    # snapd unavailable
     # - sudo snap install core
     # - sudo snap install flutter --classic
     # - flutter --version
