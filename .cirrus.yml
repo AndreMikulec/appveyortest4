@@ -4,7 +4,7 @@ linux_task:
   # name: "cirrusci/flutter:latest"
   arm_container:
     image: openjdk:latest
-    image: cimg/base:edge
+    # image: cimg/base:edge
     # aarch64 aarch64 aarch64 GNU/Linux
     # arm_container: Error starting command: fork/exec /usr/bin/bash: exec format error
     # image: cirrusci/flutter:latest
@@ -29,7 +29,15 @@ linux_task:
     # - dart --version || true
     # - sudo which flutter || true
     # - flutter --version || true
-    - sudo ls -l /usr/bin
+    - sudo ls -l /usr/bin || true
+    - sudo ls -l /home/circleci/bin || true
+    - sudo ls -l /home/circleci/.local/bin || true
+    - sudo ls -l /usr/local/sbin || true
+    - sudo ls -l /usr/local/bin || true
+    - sudo ls -l /usr/sbin || true
+    - sudo ls -l /usr/bin || true
+    - sudo ls -l /sbin || true
+    - sudo ls -l /bin || true
     # - sudo apt-get update
     # - reboot
     # - sudo apt-get install snapd
