@@ -1,51 +1,32 @@
 linux_task:
-  # name: "openjdk:latest"
-  name: "wpilib/raspbian-cross-ubuntu"
-  # name: "cirrusci/flutter:latest"
+  name: "arm cimg/base:edge"
   arm_container:
-    # image: openjdk:latest
-    image: wpilib/raspbian-cross-ubuntu
-    # aarch64 aarch64 aarch64 GNU/Linux
-    # arm_container: Error starting command: fork/exec /usr/bin/bash: exec format error
-    # image: cirrusci/flutter:latest
+    image: cimg/base:edge
     cpu: 1
     memory: 1G
   timeout_in: 5m
   script:
     - uname -a
-    - lsb_release -a || true
     - whoami
-    # - ls -alrt
-    # Unable to locate package dnf
-    # - sudo apt-get install dnf
-    # Unable to locate package yum
-    # - sudo apt-get install yum
-    ##- sudo dnf install snapd
-    # - sudo echo ${PATH}  || true
-    - sudo echo ${PATH}  || true
-    # - sudo which sudo  || true
-    # - sudo which yum   || true
-    # - sudo which snap  || true
-    # - sudo which dart  || true
+    - echo ${PATH}  || true
+    - ls -l /home/circleci/bin || true
+    - ls -l /home/circleci/.local/bin || true
+    - ls -l /usr/local/sbin || true
+    - ls -l /usr/local/bin || true
+    - ls -l /usr/sbin || true
+    - ls -l /usr/bin || true
+    - ls -l /sbin || true
+    - ls -l /bin || true
+    
+    
+    # get manually from (but I should automate this)
+    #    latest stable
+    #    https://github.com/flutter/flutter/blob/stable/bin/internal/engine.version
+    #    (ONLY 7MB - will download (including .so and flutter headers)
+    # - https://storage.googleapis.com/flutter_infra_release/flutter/5c984c26ebc4a0a8897305d3c6bef70ced91090d/linux-arm64-release/linux-arm64-flutter-gtk.zip
+    
+    # - which dart  || true
     # - dart --version || true
-    # - sudo which flutter || true
+    # - which flutter || true
     # - flutter --version || true
-    - sudo ls -l /usr/bin || true
-    - sudo ls -l /home/circleci/bin || true
-    - sudo ls -l /home/circleci/.local/bin || true
-    - sudo ls -l /usr/local/sbin || true
-    - sudo ls -l /usr/local/bin || true
-    - sudo ls -l /usr/sbin || true
-    - sudo ls -l /usr/bin || true
-    - sudo ls -l /sbin || true
-    - sudo ls -l /bin || true
-    - sudo apt-get update
-    # - reboot
-    - sudo apt-get -y install snapd
-    # - sudo which snap  || true
-    - sudo snap --version
-    # snapd unavailable
-    # - sudo snap install core
-    - sudo snap install flutter --classic
-    - flutter --version
 
