@@ -18,7 +18,25 @@ linux_task:
     - ls -l /sbin || true
     - ls -l /bin || true
     
+    # OCT 2022
+    # https://docs.flutter.dev/get-started/install/linux
+    # . . .
     
+    # https://zoomadmin.com/HowToInstall/UbuntuPackage/file
+    - sudo apt-get update -y
+    - sudo apt-get install -y file
+    # ONLY if doing: Flutter `test`
+    - sudo apt-get install -y libglu1-mesa
+
+    # OTHERS
+    - sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
+    
+    # personal preference
+    # https://linuxhint.com/install-7zip-compression-tool-on-ubuntu/
+    - sudo apt-get install -y 7zip-full
+    
+    # https://github.com/ardera/flutter-engine-binaries-for-arm
+    #
     # get manually from (but I should automate this)
     #    latest stable
     #    https://github.com/flutter/flutter/blob/stable/bin/internal/engine.version
