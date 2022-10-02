@@ -6,8 +6,6 @@ linux_task:
     memory: 1G
   timeout_in: 5m
   script:
-
-
     # https://github.com/ardera/flutter-engine-binaries-for-arm
     #
     # get manually from (but I should automate this)
@@ -16,7 +14,7 @@ linux_task:
     #    (ONLY 7MB - will download (including .so and flutter headers)
     #
     # git hash is in
-    - curl -v -o engine.version -L https://github.com/flutter/flutter/blob/stable/bin/internal/engine.version
+    - curl -v -o engine.version https://github.com/flutter/flutter/blob/stable/bin/internal/engine.version
     - export VERSION=`cat engine.version`
     - echo $VERSION
 
