@@ -22,9 +22,11 @@ linux_task:
 #
   environment:
     GITHUB_TOKEN: ENCRYPTED[93886ee87edebc87329be1a5d171f6be953c20727f609cae795f072eea024dc008f940475de50547e5b9e58e9f9e93aa]
-  name: "arm cimg/base:edge"
+  # name: "arm cimg/base:edge"
+  name: "arm alpine/flake8:latest"
   arm_container:
-    image: cimg/base:edge
+    # image: cimg/base:edge
+    image: alpine/flake8:latest
     cpu: 1
     memory: 1G
   timeout_in: 5m
@@ -32,7 +34,7 @@ linux_task:
     - uname -a
     - whoami
     - echo `pwd`
-    - echo ${PATH}  || true
+    - echo ${PATH} || true
     - ls -l /home/circleci/bin || true
     - ls -l /home/circleci/.local/bin || true
     - ls -l /usr/local/sbin || true
