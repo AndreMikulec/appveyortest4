@@ -14,7 +14,8 @@ linux_task:
     #    (ONLY 7MB - will download (including .so and flutter headers)
     #
     # git hash is in
-    - curl -v -o engine.version https://github.com/flutter/flutter/blob/stable/bin/internal/engine.version
-    - export VERSION=`cat engine.version`
-    - echo $VERSION
+    - echo hello
+    # - curl -v -o engine.version https://github.com/flutter/flutter/blob/stable/bin/internal/engine.version
+    # - export VERSION=`cat engine.version`
+    # - echo $VERSION
 
