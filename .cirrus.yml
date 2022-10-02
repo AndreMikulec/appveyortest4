@@ -6,42 +6,8 @@ linux_task:
     memory: 1G
   timeout_in: 5m
   script:
-    - uname -a
-    - whoami
-    - echo ${PATH}  || true
-    - ls -l /home/circleci/bin || true
-    - ls -l /home/circleci/.local/bin || true
-    - ls -l /usr/local/sbin || true
-    - ls -l /usr/local/bin || true
-    - ls -l /usr/sbin || true
-    - ls -l /usr/bin || true
-    - ls -l /sbin || true
-    - ls -l /bin || true
-    
-    # OCT 2022
-    # mostly from
-    # https://docs.flutter.dev/get-started/install/linux
-    # . . .
-    
-    # https://zoomadmin.com/HowToInstall/UbuntuPackage/file
-    - sudo apt-get update -y
-    - sudo apt-get install -y file
-    # ONLY if doing: Flutter `test`
-    - sudo apt-get install -y libglu1-mesa
 
-    # OTHERS
-    - sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
-    
-    # personal preference
-    # https://linuxhint.com/install-7zip-compression-tool-on-ubuntu/
-    # - sudo apt-get install -y 7zip-full
-    # Unable to locate package 7zip-full
-    
-    # NOTE "cimg/base:edge" DOES HAVE
-    # tar
-    # git
-    # gunzip, unzip, gzip
-    
+
     # https://github.com/ardera/flutter-engine-binaries-for-arm
     #
     # get manually from (but I should automate this)
@@ -49,36 +15,8 @@ linux_task:
     #    https://github.com/flutter/flutter/blob/stable/bin/internal/engine.version
     #    (ONLY 7MB - will download (including .so and flutter headers)
     #
-    # git hash is in  
+    # git hash is in
     - curl -v -o engine.version -L https://github.com/flutter/flutter/blob/stable/bin/internal/engine.version
     - export VERSION=`cat engine.version`
     - echo $VERSION
-    
-    # OPTION 1 OF 2
-    - mkdir development
-    - pushd development
-    - curl -v -o flutter.zip https://storage.googleapis.com/flutter_infra_release/flutter/5c984c26ebc4a0a8897305d3c6bef70ced91090d/linux-arm64-release/linux-arm64-flutter-gtk.zip
-    # http://magma.maths.usyd.edu.au/magma/faq/extract
-    # -a option to unzip in order to extract them with UNIX-style line terminators
-    - unzip -a flutter.zip
-    - popd
-    # 7MB (NOT AN INSTALLATION BUNDLE 600 MB) no executables found (so is this OPTION worthless?)
-    # contents
-    # libflutter_linux_gtk.so gen_snapshot flutter_linux/*.h
-    - export PATH="$PATH:`pwd`/development"
-    - export PATH="$PATH:`pwd`/development/flutter_linux"
-    
-    # OPTION 2 OF 2
-    # NOTE: I should put this ELSEWHERE and not in the PROJECT directory
-    - git clone -b stable –depth 1 https://github.com/flutter/flutter.git 
-    - export PATH="$PATH:`pwd`/flutter/bin"
-    
-    - flutter doctor -v
-    - flutter precache --linux
-    - flutter doctor -v
-    - flutter config --disable-analytics
 
-    - which dart
-    - dart --version
-    - which flutter 
-    - flutter --version
