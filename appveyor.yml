@@ -1,0 +1,41 @@
+
+version: 1.0.{build}.{branch}
+clone_depth: 1
+
+# TRYING TO FIGURE OUT THIS ERROR
+# Deploying using FTP provider
+# Cannot connect SFTP server: Failed to negotiate key exchange algorithm.
+
+environment:
+  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+
+  matrix:
+    - Platform: x64
+
+init:
+- echo init
+
+install:
+- echo install_script
+
+build_script:
+- echo build_script
+- echo ALPHA > ALPHA.txt
+
+artifacts:
+- path: 'ALPHA.txt'
+  name: ALPHA
+
+deploy:
+  - provider: FTP
+    host: frs.sourceforge.net
+    protocol: sftp
+    # https://sourceforge.net/projects/andremikulec/files/
+    username: andremikulec,andremikulec.u
+    password:
+      secure: AZOInJ/FinCYx+tbyshJR5VWUISswlz5yiGDqfgEXLg=
+    artifact: ALPHA
+    folder: /home/frs/project/andremikulec
+    application:
+    active_mode: false
+
