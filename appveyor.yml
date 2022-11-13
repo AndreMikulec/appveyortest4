@@ -38,3 +38,4 @@ deploy:
     folder: /home/frs/project/andremikulec
     application:
     active_mode: false
+    debug: true
