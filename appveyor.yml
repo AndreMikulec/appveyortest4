@@ -7,7 +7,7 @@ clone_depth: 1
 # Cannot connect SFTP server: Failed to negotiate key exchange algorithm.
 
 environment:
-  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
 
   matrix:
     - Platform: x64
@@ -22,22 +22,34 @@ build_script:
 - echo build_script
 - echo ALPHA > ALPHA.txt
 
+after_build:
+- choco install -y winscp
+- echo open ftpes://andremikulec,andremikulec.u:%FTP_PSW%@frs.sourceforge.net/ > ftp.txt 2>&1 || date /t
+- echo put ALPHA.txt / >> ftp.txt 2>&1 || date /t
+- echo exit >> ftp.txt 2>&1 || date /t
+- "C:\Program Files (x86)\WinSCP\winscp.com" /script=ftp.txt > out.txt 2>&1 || date /t
+
 artifacts:
 - path: 'ALPHA.txt'
   name: ALPHA
+- path: 'ftp.txt'
+  name: ftp
+- path: 'out.txt'
+  name: out
 
-deploy:
-  - provider: FTP
-    host: frs.sourceforge.net
-    protocol: sftp
-    # https://sourceforge.net/projects/andremikulec/files/
-    username: andremikulec,andremikulec.u
-    password:
-      secure: AZOInJ/FinCYx+tbyshJR5VWUISswlz5yiGDqfgEXLg=
-    artifact: ALPHA
-    # folder: /home/frs/project/andremikulec
-    # NO FOLDER
-    # folder: /home/pfs/project/andremikulec
-    application:
-    active_mode: false
+
+# deploy:
+#   - provider: FTP
+#     host: frs.sourceforge.net
+#     protocol: sftp
+#     # https://sourceforge.net/projects/andremikulec/files/
+#     username: andremikulec,andremikulec.u
+#     password:
+#       secure: AZOInJ/FinCYx+tbyshJR5VWUISswlz5yiGDqfgEXLg=
+#     artifact: ALPHA
+#     # folder: /home/frs/project/andremikulec
+#     # IF NO FOLDER, THEN "/"
+#     folder: /home/pfs/project/andremikulec
+#     application:
+#     active_mode: false
 
