@@ -28,7 +28,7 @@ artifacts:
 
 deploy:
   - provider: FTP
-    host: frs.sourceforge.net
+    host: shell.sourceforge.net
     protocol: sftp
     # https://sourceforge.net/projects/andremikulec/files/
     username: andremikulec,andremikulec.u
@@ -38,4 +38,4 @@ deploy:
     folder: /home/frs/project/andremikulec
     application:
     active_mode: false
-    debug: true
+
