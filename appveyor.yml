@@ -28,14 +28,15 @@ artifacts:
 
 deploy:
   - provider: FTP
-    host: shell.sourceforge.net
+    host: frs.sourceforge.net
     protocol: sftp
     # https://sourceforge.net/projects/andremikulec/files/
     username: andremikulec,andremikulec.u
     password:
       secure: AZOInJ/FinCYx+tbyshJR5VWUISswlz5yiGDqfgEXLg=
     artifact: ALPHA
-    folder: /home/frs/project/andremikulec
+    # folder: /home/frs/project/andremikulec
+    folder: /home/pfs/project/andremikulec
     application:
     active_mode: false
 
