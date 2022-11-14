@@ -27,7 +27,8 @@ after_build:
 - echo open ftpes://andremikulec,andremikulec.u:%FTP_PSW%@frs.sourceforge.net/ > ftp.txt 2>&1 || date /t
 - echo put ALPHA.txt / >> ftp.txt 2>&1 || date /t
 - echo exit >> ftp.txt 2>&1 || date /t
-- "C:\Program Files (x86)\WinSCP\winscp.com" /script=ftp.txt > out.txt 2>&1 || date /t
+- set PATH=C:\Program Files (x86)\WinSCP;%PATH%
+- winscp.com /script=ftp.txt > out.txt 2>&1 || date /t
 
 artifacts:
 - path: 'ALPHA.txt'
