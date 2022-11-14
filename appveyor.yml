@@ -36,7 +36,8 @@ deploy:
       secure: AZOInJ/FinCYx+tbyshJR5VWUISswlz5yiGDqfgEXLg=
     artifact: ALPHA
     # folder: /home/frs/project/andremikulec
-    folder: /home/pfs/project/andremikulec
+    # NO FOLDER
+    # folder: /home/pfs/project/andremikulec
     application:
     active_mode: false
 
