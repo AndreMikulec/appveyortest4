@@ -37,7 +37,7 @@ before_deploy:
     echo open sftp://andremikulec,andremikulec.u:%FTP_PSW%@frs.sourceforge.net/ -hostkey="acceptnew" > ftp.txt 2>&1 || date /t
     REM echo put ALPHA.txt /home/frs/project/andremikulec/ >> ftp.txt
     REM put all *.txt files
-    forfiles /P /M *.txt  /C "cmd /c echo put @file /home/frs/project/andremikulec/ >> ftp.txt"
+    forfiles /M *.txt  /C "cmd /c echo put @file /home/frs/project/andremikulec/ >> ftp.txt"
     echo exit >> ftp.txt
     set PATH=C:\Program Files (x86)\WinSCP;%PATH%
     winscp.com /script=ftp.txt
