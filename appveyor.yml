@@ -22,6 +22,16 @@ build_script:
 - echo build_script
 - echo ALPHA > ALPHA.txt
 
+after_build:
+
+- cmd: |
+    choco install -y winscp
+    echo open sftp://andremikulec,andremikulec.u:%FTP_PSW%@frs.sourceforge.net/ -hostkey="acceptnew" > ftp.txt 2>&1 || date /t
+    echo put ALPHA.txt /home/frs/project/andremikulec/ >> ftp.txt
+    echo exit >> ftp.txt
+    set PATH=C:\Program Files (x86)\WinSCP;%PATH%
+    winscp.com /script=ftp.txt
+
 deploy:
 
   - provider: GitHub
@@ -33,16 +43,6 @@ deploy:
     prerelease: false
     on:
       branch: master
-
-deploy_script:
-
-- cmd: |
-    choco install -y winscp
-    echo open sftp://andremikulec,andremikulec.u:%FTP_PSW%@frs.sourceforge.net/ -hostkey="acceptnew" > ftp.txt 2>&1 || date /t
-    echo put ALPHA.txt /home/frs/project/andremikulec/ >> ftp.txt
-    echo exit >> ftp.txt
-    set PATH=C:\Program Files (x86)\WinSCP;%PATH%
-    winscp.com /script=ftp.txt
 
 artifacts:
 - path: 'ALPHA.txt'
