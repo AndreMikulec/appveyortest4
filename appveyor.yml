@@ -25,7 +25,7 @@ build_script:
 deploy_script:
 - cmd: |
     choco install -y winscp
-    echo open ftpes://andremikulec,andremikulec.u:%FTP_PSW%@frs.sourceforge.net/ > ftp.txt 2>&1 || date /t
+    echo open sftp://andremikulec,andremikulec.u:%FTP_PSW%@frs.sourceforge.net/ > ftp.txt 2>&1 || date /t
     echo put ALPHA.txt /home/frs/project/andremikulec/ >> ftp.txt
     echo exit >> ftp.txt
     set PATH=C:\Program Files (x86)\WinSCP;%PATH%
