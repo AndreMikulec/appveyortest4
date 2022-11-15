@@ -22,7 +22,14 @@ build_script:
 - echo build_script
 - echo ALPHA > ALPHA.txt
 
-after_build:
+# NOTE: if "deploy_script" exists, then "deploy" will BE IGNORED
+# SO INSTEAD USE "after_build" or SOMTHING ELSE or "before_deploy"
+
+# Try to deploy (SFTP) to Sourceforge: Error - Cannot connect SFTP server: Failed to negotiate key exchange algorithm.
+# NOV 2022
+# https://help.appveyor.com/discussions/problems/33606-try-to-deploy-sftp-to-sourceforge-error-cannot-connect-sftp-server-failed-to-negotiate-key-exchange-algorithm
+
+before_deploy:
 
 - cmd: |
     choco install -y winscp
