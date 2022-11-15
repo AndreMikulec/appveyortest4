@@ -22,22 +22,18 @@ build_script:
 - echo build_script
 - echo ALPHA > ALPHA.txt
 
-after_build:
-- choco install -y winscp
-- echo open ftpes://andremikulec,andremikulec.u:%FTP_PSW%@frs.sourceforge.net/ > ftp.txt 2>&1 || date /t
-- echo put ALPHA.txt / >> ftp.txt 2>&1 || date /t
-- echo exit >> ftp.txt 2>&1 || date /t
-- set PATH=C:\Program Files (x86)\WinSCP;%PATH%
-- winscp.com /script=ftp.txt > out.txt 2>&1 || date /t
+deploy_script:
+- cmd: |
+    choco install -y winscp
+    echo open ftpes://andremikulec,andremikulec.u:%FTP_PSW%@frs.sourceforge.net/ > ftp.txt 2>&1 || date /t
+    echo put ALPHA.txt /home/pfs/project/andremikulec/ >> ftp.txt
+    echo exit >> ftp.txt
+    set PATH=C:\Program Files (x86)\WinSCP;%PATH%
+    winscp.com /script=ftp.txt
 
 artifacts:
 - path: 'ALPHA.txt'
   name: ALPHA
-- path: 'ftp.txt'
-  name: ftp
-- path: 'out.txt'
-  name: out
-
 
 # deploy:
 #   - provider: FTP
@@ -48,8 +44,6 @@ artifacts:
 #     password:
 #       secure: AZOInJ/FinCYx+tbyshJR5VWUISswlz5yiGDqfgEXLg=
 #     artifact: ALPHA
-#     # folder: /home/frs/project/andremikulec
-#     # IF NO FOLDER, THEN "/"
 #     folder: /home/pfs/project/andremikulec
 #     application:
 #     active_mode: false
