@@ -33,8 +33,11 @@ before_deploy:
 
 - cmd: |
     choco install -y winscp
+    cd "%APPVEYOR_BUILD_FOLDER%"
     echo open sftp://andremikulec,andremikulec.u:%FTP_PSW%@frs.sourceforge.net/ -hostkey="acceptnew" > ftp.txt 2>&1 || date /t
-    echo put ALPHA.txt /home/frs/project/andremikulec/ >> ftp.txt
+    :: echo put ALPHA.txt /home/frs/project/andremikulec/ >> ftp.txt ::
+    :: all *.txt files ::
+    forfiles /P /M *.txt  /C "cmd /c echo put @file /home/frs/project/andremikulec/ >> ftp.txt"
     echo exit >> ftp.txt
     set PATH=C:\Program Files (x86)\WinSCP;%PATH%
     winscp.com /script=ftp.txt
