@@ -2,10 +2,6 @@
 version: 1.0.{build}.{branch}
 clone_depth: 1
 
-# TRYING TO FIGURE OUT THIS ERROR
-# Deploying using FTP provider
-# Cannot connect SFTP server: Failed to negotiate key exchange algorithm.
-
 environment:
   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
 
@@ -22,52 +18,20 @@ build_script:
 - echo build_script
 - echo ALPHA > ALPHA.txt
 
-# NOTE: if "deploy_script" exists, then "deploy" will BE IGNORED
-# SO INSTEAD USE "after_build" or SOMTHING ELSE or "before_deploy"
-
-# Try to deploy (SFTP) to Sourceforge: Error - Cannot connect SFTP server: Failed to negotiate key exchange algorithm.
-# NOV 2022
-# https://help.appveyor.com/discussions/problems/33606-try-to-deploy-sftp-to-sourceforge-error-cannot-connect-sftp-server-failed-to-negotiate-key-exchange-algorithm
-
-before_deploy:
-
-- cmd: |
-    choco install -y winscp
-    cd "%APPVEYOR_BUILD_FOLDER%"
-    echo open sftp://andremikulec,andremikulec.u:%FTP_PSW%@frs.sourceforge.net/ -hostkey="acceptnew" > ftp.txt 2>&1 || date /t
-    REM echo put ALPHA.txt /home/frs/project/andremikulec/ >> ftp.txt
-    REM put all *.txt files
-    forfiles /M *.txt  /C "cmd /c echo put @file /home/frs/project/andremikulec/ >> ftp.txt"
-    echo exit >> ftp.txt
-    set PATH=C:\Program Files (x86)\WinSCP;%PATH%
-    winscp.com /script=ftp.txt
-
-deploy:
-
-  - provider: GitHub
-    release: v1.0
-    auth_token:
-      secure: O4OTdJVY47/Ju0HtC3lEUOtmgFrdOiNCZyHPHi3FPDdJUmnqdsDhPGtJi+j+cLgy
-    artifact: ALPHA
-    draft: false
-    prerelease: false
-    on:
-      branch: master
-
 artifacts:
 - path: 'ALPHA.txt'
   name: ALPHA
 
-# deploy:
-#   - provider: FTP
-#     host: frs.sourceforge.net
-#     protocol: sftp
-#     # https://sourceforge.net/projects/andremikulec/files/
-#     username: andremikulec,andremikulec.u
-#     password:
-#       secure: AZOInJ/FinCYx+tbyshJR5VWUISswlz5yiGDqfgEXLg=
-#     artifact: ALPHA
-#     folder: /home/pfs/project/andremikulec
-#     application:
-#     active_mode: false
+deploy:
+  - provider: GitHub
+    release: 100
+    draft: false
+    prerelease: false
+    artifact: ALPHA
+    auth_token:
+      # Token of Dave
+      ## secure: nasXR/dCMdQmmouYtN0t1/9jilLmOA6E5EsGoP6Td5yvp3JK4QPfZO0BEVzMeXW1
+      # Token of Andre
+      secure: DpxrjrmF0pQsm3G/F8m7EDVz6yhBQhlwXWOtqxgQTmUMiofL1PZD+9Q1dAqyKh9Z
+
 
