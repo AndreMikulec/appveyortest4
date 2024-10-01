@@ -24,7 +24,7 @@ artifacts:
 
 deploy:
   - provider: GitHub
-    release: 100
+    release: RELTEST
     draft: false
     prerelease: false
     artifact: ALPHA
@@ -33,8 +33,8 @@ deploy:
       # secure: nasXR/dCMdQmmouYtN0t1/9jilLmOA6E5EsGoP6Td5yvp3JK4QPfZO0BEVzMeXW1
       # Token of Dave 2 - see https://github.com/postgres-plr/plr/blob/20a1f133bcf2bc8f37ac23da191aea590d612619/appveyor.yml
       #                       https://ci.appveyor.com/project/davecramer/plr-daun5/builds/47690260/job/rhk8vhhp39geulxu
-      secure: DpxrjrmF0pQsm3G/F8m7EDVz6yhBQhlwXWOtqxgQTmUMiofL1PZD+9Q1dAqyKh9Z
+      # secure: DpxrjrmF0pQsm3G/F8m7EDVz6yhBQhlwXWOtqxgQTmUMiofL1PZD+9Q1dAqyKh9Z
       # Token of Andre 2
-      # secure: KzS1DumC2yBg2LGN9x3AemHFOjAdp+rD58rW5aGGpwW4Pfdwdm7AmRpYKprPY8Gs
+      secure: KzS1DumC2yBg2LGN9x3AemHFOjAdp+rD58rW5aGGpwW4Pfdwdm7AmRpYKprPY8Gs
 
 
