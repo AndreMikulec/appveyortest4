@@ -34,7 +34,9 @@ deploy:
       # Token of Dave 2 - see https://github.com/postgres-plr/plr/blob/20a1f133bcf2bc8f37ac23da191aea590d612619/appveyor.yml
       #                       https://ci.appveyor.com/project/davecramer/plr-daun5/builds/47690260/job/rhk8vhhp39geulxu
       # secure: DpxrjrmF0pQsm3G/F8m7EDVz6yhBQhlwXWOtqxgQTmUMiofL1PZD+9Q1dAqyKh9Z
-      # Token of Andre 2
-      secure: KzS1DumC2yBg2LGN9x3AemHFOjAdp+rD58rW5aGGpwW4Pfdwdm7AmRpYKprPY8Gs
+      # Token of Andre 2 (DID NOT WORK - EARLY OCT 2024
+      # Token of Andre 3 OCT - 2024 - CLASSIC - PAT_OCT2024__repostatus__repo_deployment__public_repo
+      #   to AppVeyor (Account -> Encrypt YAML)
+      secure: p/5gj6Qtfk4BKm9EBhiDw0r4UkHKtRyH5mIOsQs2QzI128Vul9mjTgT/WM8cnNa6
 
 
